@@ -9,7 +9,7 @@ import Home from './Home';
 import UserCard from './UserCard';
 import NewPoll from './NewPoll';
 import Leaderboard from './Leaderboard';
-import NoMatch from './NoMatch';
+import Error404 from './Error404';
 
 class App extends Component {
   componentDidMount() {
@@ -34,11 +34,11 @@ class App extends Component {
               <ContentGrid>
                 <Switch>
                   <Route exact path="/" component={Home} />
-                  <Route path="/questions/bad_id" component={NoMatch} />
+                  <Route path="/questions/bad_id" component={Error404} />
                   <Route path="/questions/:question_id" component={UserCard} />
                   <Route path="/add" component={NewPoll} />
                   <Route path="/leaderboard" component={Leaderboard} />
-                  <Route component={NoMatch} />
+                  <Route component={Error404} />
                 </Switch>
               </ContentGrid>
             </Fragment>
@@ -62,7 +62,6 @@ function mapStateToProps({ authUser }) {
     authUser
   };
 }
-
 export default connect(
   mapStateToProps,
   { handleInitialData }
