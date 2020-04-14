@@ -1,0 +1,42 @@
+.container {
+  max-width: 400px;
+  margin: auto;
+  border: solid rgb(212, 205, 205) 1px;
+  border-radius: 4px;
+  margin-top: 40px;
+  padding: 10px;
+  box-shadow: 0 0 2px rgb(207, 203, 203);
+  height: 350px;
+}
+
+.frontText {
+  color: black;
+  font-size: 1.2rem;
+  margin: 20px 0;
+  font-family: sans-serif;
+}
+
+.header {
+  font-style: oblique;
+  color: blue;
+}
+
+.text {
+  margin: 11px 0;
+  font-size: 1.1rem;
+  font-family: sans-serif;
+}
+
+.input {
+  min-width: 200px;
+  height: 30px;
+}
+
+.bth {
+  color: white;
+  background-color: black;
+  height: 30px;
+  border: blue;
+  margin: 0;
+  padding: 0 5px;
+}

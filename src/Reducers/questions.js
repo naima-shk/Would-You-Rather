@@ -1,38 +1,33 @@
-import {
-    RECEIVE_QUESTIONS,
-    ADD_ANSWER_TO_QUESTION,
-    ADD_QUESTION
-  } from '../actions/questions';
-  
-  export default function questions(state = {}, action) {
-    switch (action.type) {
-      case RECEIVE_QUESTIONS:
-        return {
-          ...state,
-          ...action.questions
-        };
-      case ADD_ANSWER_TO_QUESTION:
-        const { authUser, qid, answer } = action;
-  
-        return {
-          ...state,
-          [qid]: {
-            ...state[qid],
-            [answer]: {
-              ...state[qid][answer],
-              votes: state[qid][answer].votes.concat(authUser)
-            }
-          }
-        };
-      case ADD_QUESTION:
-        const { question } = action;
-  
-        return {
-          ...state,
-          [question.id]: question
-        };
-      default:
-        return state;
-    }
+import { RECEIVE_QUESTIONS, SAVE_QUESTION, ANSWER_QUESTION } from '../Actions/questions';
+
+const questionsReducer = (state = {}, action) => {
+  switch (action.type) {
+    case RECEIVE_QUESTIONS:
+      return {
+        ...state,
+        ...action.questions,
+      };
+    case SAVE_QUESTION:
+      return {
+        ...state,
+        [action.question.id]: action.question,
+      };
+    case ANSWER_QUESTION:
+      return {
+        ...state,
+        [action.answerInfo.qid]: {
+          ...state[action.answerInfo.qid],
+          [action.answerInfo.answer]: {
+            ...state[action.answerInfo.qid][action.answerInfo.answer],
+            votes: state[action.answerInfo.qid][action.answerInfo.answer].votes.concat(
+              action.answerInfo.authedUser
+            ),
+          },
+        },
+      };
+    default:
+      return state;
   }
-  
+};
+
+export default questionsReducer;
